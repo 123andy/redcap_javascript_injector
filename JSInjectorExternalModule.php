@@ -357,7 +357,8 @@ class JSInjectorExternalModule extends AbstractExternalModule {
             }
             foreach ($ps as $this_key => $this_val) {
                 if (starts_with($this_key, "proj-context")) {
-                    $this_context = array_pop(explode("_", $this_key, 2));
+                    $context_array = explode("_", $this_key, 2);
+                    $this_context = array_pop($context_array);
                     if (in_array($this_context, $contexts, true)) {
                         if ($this_val[$i] == "include") {
                             $snippet["ctx"][$this_context] = true;
